@@ -8,30 +8,34 @@ struct ContentView: View {
     
     
     var body: some View {
-        VStack {
-            Text("Welcome to Pulse!")
-                .font(.largeTitle)
-                .padding()
-            Text("Your health advisor to help you take control of your health")
-                .foregroundColor(.gray)
-            
-            Button("Request Authorization") {
-                            HealthKitManager.shared.requestAuthorization { success, error in
-                                self.authorizationGranted = success
-                                self.error = error
-                            }
-                        }
-                        
-                        if authorizationGranted {
-                            Text("HealthKit authorization granted.")
-                        } else if let error = error {
-                            Text("Authorization failed: \(error.localizedDescription)")
-                        } else {
-                            Text("Authorization not determined yet.")
-                        }
-            Button("Fetch Steps") {
-                HealthKitManager.shared.fetchStepCountData()
+        NavigationView {
+            VStack {
+                Text("Pulse!")
+                    .font(.largeTitle)
+                    .padding()
+                Text("Health and Routine Tracking")
+                    .foregroundColor(.gray)
+                
+                Button("Request Authorization") {
+                    HealthKitManager.shared.requestAuthorization { success, error in
+                        self.authorizationGranted = success
+                        self.error = error
+                    }
+                }
+                
+                if authorizationGranted {
+                    Text("HealthKit authorization granted.")
+                } else if let error = error {
+                    Text("Authorization failed: \(error.localizedDescription)")
+                } else {
+                    Text("Authorization not determined yet.")
+                }
+                Button("Fetch Steps") {
+                    HealthKitManager.shared.fetchStepCountData()
+                }
             }
+            .navigationTitle("Home")
+                
         }
     }
 }

@@ -7,13 +7,18 @@
 
 import UIKit
 
-class NewViewController: UIViewController {
-
+class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
 
-        // Do any additional setup after loading the view.
+        let label = UILabel()
+        label.text = "Hello from the new view!"
+        label.textAlignment = .center
+        label.frame = view.bounds
+        view.addSubview(label)
     }
+}
     
 
     /*
@@ -26,4 +31,3 @@ class NewViewController: UIViewController {
     }
     */
 
-}
