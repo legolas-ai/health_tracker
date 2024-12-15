@@ -2,11 +2,9 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @State private var authorizationGranted = false
-    @State private var error: Error?
+ 
 
-    
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -16,23 +14,21 @@ struct ContentView: View {
                 Text("Health and Routine Tracking")
                     .foregroundColor(.gray)
                 
-                Button("Request Authorization") {
-                    HealthKitManager.shared.requestAuthorization { success, error in
-                        self.authorizationGranted = success
-                        self.error = error
-                    }
-                }
+    
                 
-                if authorizationGranted {
-                    Text("HealthKit authorization granted.")
-                } else if let error = error {
-                    Text("Authorization failed: \(error.localizedDescription)")
-                } else {
-                    Text("Authorization not determined yet.")
+                // Navigation to AuthView
+                NavigationLink(
+                    destination: AuthView() // Your new AuthView
+                ) {
+                    Text("Go to AuthView")
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(8)
                 }
-                Button("Fetch Steps") {
-                    HealthKitManager.shared.fetchStepCountData()
-                }
+                .padding()
+                
+                
             }
             .navigationTitle("Home")
                 
