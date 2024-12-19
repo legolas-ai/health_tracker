@@ -16,7 +16,7 @@ struct AuthView: View {
     
     var body: some View {
         VStack {
-            Text("Welcome to AuthView!")
+            Text("Sync your health data to get started")
                 .font(.largeTitle)
                 .padding()
     

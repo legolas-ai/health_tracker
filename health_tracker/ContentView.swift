@@ -20,7 +20,7 @@ struct ContentView: View {
                 NavigationLink(
                     destination: AuthView() // Your new AuthView
                 ) {
-                    Text("Go to AuthView")
+                    Text("Go to Sync Health Data")
                         .foregroundColor(.white)
                         .padding()
                         .background(Color.blue)
