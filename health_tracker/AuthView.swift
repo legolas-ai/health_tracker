@@ -17,8 +17,9 @@ struct AuthView: View {
     var body: some View {
         VStack {
             Text("Sync your health data to get started")
-                .font(.largeTitle)
+                .font(.subheadline)
                 .padding()
+                .multilineTextAlignment(.center)
     
             Button("Request Authorization") {
                 HealthKitManager.shared.requestAuthorization { success, error in
